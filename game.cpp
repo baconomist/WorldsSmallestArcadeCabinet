@@ -2,12 +2,10 @@
 // 
 // 
 
-#include <Adafruit_SSD1306.h>
-
 #include "game.h"
 #include "ball.h"
 
-Game::Game(Adafruit_SSD1306 display)
+Game::Game(U8G2 display)
 {
 	this->display = display;
 
@@ -16,23 +14,29 @@ Game::Game(Adafruit_SSD1306 display)
 	pongBall->start();
 }
 
-int Game::getWidth() { return display.width(); }
-int Game::getHeight() { return display.height(); }
+int Game::getWidth() { return display.getWidth(); }
+int Game::getHeight() { return display.getHeight(); }
+
+void Game::start()
+{
+	display.begin();
+	Serial.begin(9600);
+}
 
 void Game::gameLoop()
 {
+	frame_t_start = millis();
+	
 	draw();
+	
+	deltaTime = (millis() - frame_t_start) / 1000.0f;
 }
 
 void Game::draw()
 {
-	display.clearDisplay();
+	display.clearBuffer();
 	// Draw stuff to the buffer here
 	pongBall->draw(display);
-	display.display();
-
-	// Keep a constant refresh rate
-	delay((1.0f / FPS) * 1000);
+	display.sendBuffer();
 }
-
 

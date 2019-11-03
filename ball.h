@@ -3,13 +3,11 @@
 #ifndef _BALL_h
 #define _BALL_h
 
-#include <Adafruit_SSD1306.h>
+extern const int RADIUS;
 
 class Ball
 {
 public:
-	const int RADIUS = 1.0f;
-
 	int x = 0;
 	int y = 0;
 
@@ -20,7 +18,7 @@ public:
 
 	void start();
 
-	void draw(Adafruit_SSD1306 display);
+	void draw(U8G2 display);
 	void update();
 
 	void setPosition(int x, int y);

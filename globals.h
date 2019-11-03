@@ -5,6 +5,6 @@
 
 #include "game.h"
 
-extern Game* pongGame;
+extern Game pongGame;
 
 #endif

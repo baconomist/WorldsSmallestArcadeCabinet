@@ -3,26 +3,28 @@
 #ifndef _GAME_h
 #define _GAME_h
 
-#include <Adafruit_SSD1306.h>
+#include <U8g2lib.h>
 #include "ball.h"
 
 class Game
 {
 public:
+	float deltaTime = 0;
 
-	const int FPS = 30;
+	U8G2 display;
+	Ball* pongBall;
 
-	Adafruit_SSD1306 display;
-	Ball *pongBall;
-
-	Game(Adafruit_SSD1306 display);
+	Game(U8G2 display);
 
 	int getWidth();
 	int getHeight();
 
+	void start();
 	void gameLoop();
-
+private:
 	void draw();
+
+	unsigned long frame_t_start = 0;
 };
 #endif
 
