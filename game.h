@@ -12,7 +12,7 @@ public:
 	float deltaTime = 0;
 
 	U8G2 display;
-	Ball* pongBall;
+	Ball pongBall;
 
 	Game(U8G2 display);
 

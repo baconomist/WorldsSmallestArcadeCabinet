@@ -5,13 +5,11 @@
 #include "game.h"
 #include "ball.h"
 
-Game::Game(U8G2 display)
+Game::Game(U8G2 display) : pongBall()
 {
 	this->display = display;
 
-	pongBall = new Ball();
-	pongBall->setPosition(10, 10);
-	pongBall->start();
+	pongBall.start();
 }
 
 int Game::getWidth() { return display.getWidth(); }
@@ -36,7 +34,7 @@ void Game::draw()
 {
 	display.clearBuffer();
 	// Draw stuff to the buffer here
-	pongBall->draw(display);
+	pongBall.draw(display);
 	display.sendBuffer();
 }
 
