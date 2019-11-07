@@ -109,12 +109,14 @@
     <ClInclude Include="ball.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="globals.h" />
+    <ClInclude Include="input.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="__vm\.WorldsSmallestArcadeCabinet.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ball.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="input.cpp" />
   </ItemGroup>
   <PropertyGroup>
     <DebuggerFlavor>VisualMicroDebugger</DebuggerFlavor>

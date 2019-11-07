@@ -18,7 +18,6 @@ int Game::getHeight() { return display.getHeight(); }
 void Game::start()
 {
 	display.begin();
-	Serial.begin(9600);
 }
 
 void Game::gameLoop()

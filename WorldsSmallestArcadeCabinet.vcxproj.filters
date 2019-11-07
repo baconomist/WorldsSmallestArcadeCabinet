@@ -29,6 +29,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h" />
+    <ClInclude Include="input.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ball.cpp">
@@ -36,6 +37,9 @@
     </ClCompile>
     <ClCompile Include="game.cpp">
       <Filter>Source Files\pong</Filter>
+    </ClCompile>
+    <ClCompile Include="input.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
