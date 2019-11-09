@@ -1,6 +1,11 @@
 #include "input.h"
 #include "Arduino.h"
 
+Input::Input()
+{
+	
+}
+
 Input::Input(Buttons& buttons)
 {
 	this->buttons = buttons;

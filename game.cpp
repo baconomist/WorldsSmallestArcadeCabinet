@@ -4,10 +4,12 @@
 
 #include "game.h"
 #include "ball.h"
+#include "input.h"
 
-Game::Game(U8G2 display) : pongBall()
+Game::Game(U8G2 display, Input input) : pongBall(), paddle()
 {
 	this->display = display;
+	this->input = input;
 
 	pongBall.start();
 }
@@ -34,6 +36,7 @@ void Game::draw()
 	display.clearBuffer();
 	// Draw stuff to the buffer here
 	pongBall.draw(display);
+	paddle.draw(display);
 	display.sendBuffer();
 }
 

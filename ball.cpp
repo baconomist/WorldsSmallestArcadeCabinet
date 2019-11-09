@@ -18,12 +18,8 @@ void Ball::start()
 	setVelocity(5, 5);
 }
 
-char hg[10];
 void Ball::draw(U8G2 display)
 {
-	sprintf(hg, "%d, %d", x, y);
-	Serial.println(hg);
-
 	display.drawFilledEllipse(x, y, RADIUS, RADIUS*2, U8G2_DRAW_ALL);
 
 	update();

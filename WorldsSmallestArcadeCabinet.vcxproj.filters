@@ -29,7 +29,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h" />
-    <ClInclude Include="input.h" />
+    <ClInclude Include="input.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="paddle.h">
+      <Filter>Source Files\pong</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ball.cpp">
@@ -40,6 +45,9 @@
     </ClCompile>
     <ClCompile Include="input.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="paddle.cpp">
+      <Filter>Source Files\pong</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

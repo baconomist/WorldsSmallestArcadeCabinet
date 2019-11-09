@@ -20,12 +20,13 @@ public:
 class Input
 {
 public:
+	Buttons buttons;
+
+	Input();
 	Input(Buttons& buttons);
 
 	void start();
 
 	bool GetButtonDown(int button);
-private:
-	Buttons buttons;
 };
 
