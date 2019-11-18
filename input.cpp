@@ -13,10 +13,10 @@ Input::Input(Buttons& buttons)
 
 void Input::start() 
 {
-	pinMode(buttons.LEFT_BOTTOM, INPUT_PULLUP);
-	pinMode(buttons.LEFT_BOTTOM, INPUT_PULLUP);
-	pinMode(buttons.RIGHT_BOTTOM, INPUT_PULLUP);
-	pinMode(buttons.RIGHT_TOP, INPUT_PULLUP);
+	pinMode(buttons.LEFT_BOTTOM, INPUT);
+	pinMode(buttons.LEFT_TOP, INPUT);
+	pinMode(buttons.RIGHT_BOTTOM, INPUT);
+	pinMode(buttons.RIGHT_TOP, INPUT);
 }
 
 bool Input::GetButtonDown(int button)

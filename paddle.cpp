@@ -18,10 +18,8 @@ void Paddle::update()
 	{
 		y -= 1;
 	}
-	else if (pongGame.input.GetButtonDown(pongGame.input.buttons.LEFT_TOP)) 
+	else if (pongGame.input.GetButtonDown(pongGame.input.buttons.LEFT_TOP))
 	{
 		y += 1;
 	}
-
-	//Serial.println(pongGame.input.GetButtonDown(pongGame.input.buttons.LEFT_BOTTOM));
 }
