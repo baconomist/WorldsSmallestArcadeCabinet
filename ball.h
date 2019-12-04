@@ -21,7 +21,9 @@ public:
 	void draw(U8G2 display);
 	void update();
 
-	void handleBounds();
+	void handleBounce();
+	
+	void onBounce();
 
 	void setPosition(int x, int y);
 

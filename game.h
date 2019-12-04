@@ -15,7 +15,8 @@ public:
 	U8G2 display;
 	Input input;
 	Ball pongBall;
-	Paddle paddle;
+	LeftPaddle leftPaddle;
+	RightPaddle rightPaddle;
 
 	Game(U8G2 display, Input input);
 
