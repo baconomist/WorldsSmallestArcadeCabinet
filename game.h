@@ -6,6 +6,7 @@
 #include "paddle.h"
 #include "ball.h"
 #include "input.h"
+#include "score.h"
 
 class Game
 {
@@ -17,6 +18,7 @@ public:
 	Ball pongBall;
 	LeftPaddle leftPaddle;
 	RightPaddle rightPaddle;
+	Score score;
 
 	Game(U8G2 display, Input input);
 
@@ -24,8 +26,10 @@ public:
 	int getHeight();
 
 	void start();
+	void goToNextRound();
 	void gameLoop();
 private:
+	void initialize_display();
 	void draw();
 
 	unsigned long frame_t_start = 0;

@@ -35,6 +35,7 @@
     <ClInclude Include="paddle.h">
       <Filter>Source Files\pong</Filter>
     </ClInclude>
+    <ClInclude Include="score.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ball.cpp">
@@ -48,6 +49,9 @@
     </ClCompile>
     <ClCompile Include="paddle.cpp">
       <Filter>Source Files\pong</Filter>
+    </ClCompile>
+    <ClCompile Include="score.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
