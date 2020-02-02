@@ -15,13 +15,13 @@ void Paddle::draw(U8G2 display)
 void Paddle::update() 
 {
 	int speed = 5;
-	if (down_button_pressed() && y - speed >= 0)
+	if (down_button_pressed() && y - speed >= -LENGTH / 2)
 	{
-		y -= round(speed * pongGame.deltaTime * 100);
+		y -= round(speed * pongGame.deltaTime * 10);
 	}
-	else if (up_button_pressed() && y + speed + LENGTH <= pongGame.getHeight())
+	else if (up_button_pressed() && y + speed + LENGTH <= pongGame.getHeight() + LENGTH / 2)
 	{
-		y += round(speed * pongGame.deltaTime * 100);
+		y += round(speed * pongGame.deltaTime * 10);
 	}
 }
 

@@ -3,6 +3,8 @@
 #ifndef _BALL_h
 #define _BALL_h
 
+enum ScreenSide { SCREEN_LEFT, SCREEN_RIGHT, SCREEN_TOP, SCREEN_BOTTOM };
+
 extern const int RADIUS;
 
 class Ball
@@ -17,13 +19,14 @@ public:
 	Ball();
 
 	void start();
+	void reset();
 
 	void draw(U8G2 display);
 	void update();
 
 	void handleBounce();
 	
-	void onBounce();
+	void onBounce(ScreenSide screenSide);
 
 	void setPosition(int x, int y);
 

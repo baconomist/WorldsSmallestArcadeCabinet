@@ -112,6 +112,7 @@
     <ClInclude Include="input.h" />
     <ClInclude Include="paddle.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="score.h" />
     <ClInclude Include="__vm\.WorldsSmallestArcadeCabinet.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +120,7 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="paddle.cpp" />
+    <ClCompile Include="score.cpp" />
   </ItemGroup>
   <PropertyGroup>
     <DebuggerFlavor>VisualMicroDebugger</DebuggerFlavor>
