@@ -83,18 +83,26 @@ void Ball::handleBounce()
 
 	if ((next_x - RADIUS * 2 < 0) || (next_x + RADIUS * 2 > pongGame.getWidth()))
 	{
-		vel_x = -vel_x;
 		onBounce(((next_x - RADIUS * 2 < 0) ? SCREEN_LEFT : SCREEN_RIGHT));
 	}
 	if ((next_y - RADIUS * 2 < 0) || (next_y + RADIUS * 2 > pongGame.getHeight()))
 	{
-		vel_y = -vel_y;
 		onBounce(((next_y - RADIUS * 2 < 0) ? SCREEN_TOP : SCREEN_BOTTOM));
 	}
 }
 
 void Ball::onBounce(ScreenSide screenSide)
 {
+	if (screenSide != SCREEN_TOP && screenSide != SCREEN_BOTTOM)
+	{
+		vel_x = -vel_x;
+		vel_y = -vel_y + 1 * (random(0, 1) == 0 ? 1 : -1);
+	}
+	else
+	{
+		vel_y = -vel_y;
+	}
+
 	if ((y - pongGame.leftPaddle.y > Paddle::LENGTH || y < pongGame.leftPaddle.y) && screenSide == SCREEN_LEFT)
 	{
 		pongGame.nextRound();
