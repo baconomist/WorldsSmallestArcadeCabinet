@@ -95,15 +95,14 @@ void Ball::handleBounce()
 
 void Ball::onBounce(ScreenSide screenSide)
 {
-	if (y - pongGame.leftPaddle.y > Paddle::LENGTH && screenSide == SCREEN_LEFT)
+	if ((y - pongGame.leftPaddle.y > Paddle::LENGTH || y < pongGame.leftPaddle.y) && screenSide == SCREEN_LEFT)
 	{
-		pongGame.goToNextRound();
+		pongGame.nextRound();
 		pongGame.score.right_player_score++;
 	}
-	else if (y - pongGame.rightPaddle.y > Paddle::LENGTH && screenSide == SCREEN_RIGHT)
+	else if ((y - pongGame.rightPaddle.y > Paddle::LENGTH || y < pongGame.rightPaddle.y) && screenSide == SCREEN_RIGHT)
 	{
-		Serial.println(screenSide == SCREEN_RIGHT);
-		pongGame.goToNextRound();
+		pongGame.nextRound();
 		pongGame.score.left_player_score++;
 	}
 }

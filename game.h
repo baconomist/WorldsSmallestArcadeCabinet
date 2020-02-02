@@ -26,7 +26,7 @@ public:
 	int getHeight();
 
 	void start();
-	void goToNextRound();
+	void nextRound();
 	void gameLoop();
 private:
 	void initialize_display();

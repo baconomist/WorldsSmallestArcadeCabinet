@@ -31,7 +31,7 @@ void Game::start()
 	pongBall.start();
 }
 
-void Game::goToNextRound() 
+void Game::nextRound() 
 {
 	pongBall.reset();
 	pongBall.start();
