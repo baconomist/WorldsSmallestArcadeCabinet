@@ -96,7 +96,12 @@ void Ball::onBounce(ScreenSide screenSide)
 	if (screenSide != SCREEN_TOP && screenSide != SCREEN_BOTTOM)
 	{
 		vel_x = -vel_x;
-		vel_y = -vel_y + 1 * (random(0, 1) == 0 ? 1 : -1);
+		vel_y = -vel_y;
+		if (screenSide == SCREEN_LEFT)
+			vel_y += ((pongGame.leftPaddle.up_button_pressed() ? 1 : 0) + (pongGame.leftPaddle.down_button_pressed() ? -1 : 0)) * (vel_y > 0 ? 1 : -1);
+		else if (screenSide == SCREEN_RIGHT)
+			vel_y += ((pongGame.rightPaddle.up_button_pressed() ? 1 : 0) + (pongGame.rightPaddle.down_button_pressed() ? -1 : 0)) * (vel_y > 0 ? 1 : -1);
+		//vel_y = -vel_y + 1 * (random(0, 1) == 0 ? 1 : -1);
 	}
 	else
 	{
