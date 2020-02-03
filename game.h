@@ -12,6 +12,8 @@ class Game
 {
 public:
 	float deltaTime = 0;
+	bool in_main_menu = true;
+	bool game_over = false;
 
 	U8G2 display;
 	Input input;
@@ -28,6 +30,15 @@ public:
 	void start();
 	void nextRound();
 	void gameLoop();
+
+	void drawMainMenu();
+
+	void drawGameOverScreen();
+
+	void drawGame();
+
+	void showSplashScreen();
+
 private:
 	void initialize_display();
 	void draw();

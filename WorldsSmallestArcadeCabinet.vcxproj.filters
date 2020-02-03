@@ -35,7 +35,9 @@
     <ClInclude Include="paddle.h">
       <Filter>Source Files\pong</Filter>
     </ClInclude>
-    <ClInclude Include="score.h" />
+    <ClInclude Include="score.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ball.cpp">

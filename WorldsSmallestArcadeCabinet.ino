@@ -25,13 +25,15 @@ Buttons buttons = Buttons{};
 Input input(buttons);
 Game pongGame(u8g2, input);
 
-void setup(void) {
+void setup(void)
+{
 	Serial.begin(9600);
 
 	pongGame.start();
 	input.start();
 }
 
-void loop(void) {
+void loop(void)
+{
 	pongGame.gameLoop();
 }
