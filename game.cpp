@@ -7,7 +7,11 @@
 #include "ball.h"
 #include "input.h"
 
+#include "sound_manager.h"
+
 float menu_accumilator = 0;
+bool draw_pre_round_timer = true;
+bool set_delta_time_zero = false;
 
 void draw_centerline(Game* game, int dash_height = 3)
 {
@@ -50,8 +54,12 @@ void Game::start()
 
 void Game::nextRound() 
 {
+	// Reset ball
 	pongBall.reset();
 	pongBall.start();
+	
+	// Enable pre-round timer
+	draw_pre_round_timer = true;
 }
 
 char dtPrintBuffer[50];
@@ -63,6 +71,12 @@ void Game::gameLoop()
 	draw();
 
 	deltaTime = (millis() - frame_t_start) / 1000.0f;
+
+	if (set_delta_time_zero)
+	{
+		deltaTime = 0;
+		set_delta_time_zero = false;
+	}
 
 	if (millis() - log_timer > 1000) {
 		sprintf(dtPrintBuffer, "Delta Time: %dms, FPS: %d", (int)(deltaTime * 1000), (int)(1 / deltaTime));
@@ -98,6 +112,7 @@ void Game::drawGameOverScreen()
 	{
 		display.drawStr(getWidth() / 6, getHeight() / 2 - 5, (score.left_player_score >= 11 ? "L-Player" : "R-Player"));
 		display.drawStr(getWidth() / 6 + 10, getHeight() / 2 + 5, "Won!");
+		SoundManager::playHighBeep();
 	}
 	else if (menu_accumilator <= 1.0f) {}
 	else if (menu_accumilator <= 1.5f) 
@@ -128,6 +143,13 @@ void Game::drawGame()
 	score.draw(display);
 
 	draw_centerline(this);
+}
+
+void Game::updateGame()
+{
+	pongBall.update();
+	leftPaddle.update();
+	rightPaddle.update();
 }
 
 void Game::showSplashScreen() 
@@ -171,7 +193,42 @@ void Game::draw()
 	else if (game_over)
 		drawGameOverScreen();
 	else
-		drawGame();
+	{
+		if (draw_pre_round_timer)
+		{		
+			// Pre-round timer
+			for (int i = 3; i > 0; i--)
+			{
+				char buff[10];
+				sprintf(buff, "%d", i);
+
+				display.clearBuffer();
+
+				drawGame();
+
+				display.setFont(u8g2_font_10x20_mf);
+				display.drawStr(getWidth() / 2.0f - 5, getHeight() / 2.0f, buff);
+				SoundManager::playLowBeep();
+				// Reset Font
+				display.setFont(u8g2_font_5x7_mf);
+				
+				display.sendBuffer();
+				
+				delay(500);
+			}
+			draw_pre_round_timer = false;
+			// Prevent updates until frame after round timer
+			set_delta_time_zero = true;
+
+			SoundManager::playHighBeep();
+		}
+		else
+		{
+			display.setFont(u8g2_font_5x7_mf);
+			updateGame();
+			drawGame();
+		}
+	}
 	
 	display.sendBuffer();
 }

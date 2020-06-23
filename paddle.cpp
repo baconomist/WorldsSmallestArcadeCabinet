@@ -9,7 +9,6 @@ Paddle::Paddle()
 void Paddle::draw(U8G2 display)
 {
 	display.drawBox(x, y, WIDTH, LENGTH);
-	update();
 }
 
 void Paddle::update() 

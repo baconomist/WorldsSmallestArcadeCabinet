@@ -13,6 +13,7 @@
 #include "globals.h"
 
 #include "input.h"
+#include "sound_manager.h"
 
 //U8G2_LD7032_60X32_F_SW_I2C u8g2(U8G2_R0, /* clock=*/ 21, /* data=*/ 20, /* reset=*/ 0);
 //U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, /* clock=*/ A4, /* data=*/ A3, /* reset=*/ 0);
@@ -31,9 +32,19 @@ void setup(void)
 
 	pongGame.start();
 	input.start();
+
+	pinMode(SoundManager::SPEAKER_PIN, OUTPUT);
+	SoundManager::playStartMusic();
 }
 
 void loop(void)
 {
 	pongGame.gameLoop();
+
+	// Cap to max_fps fps
+	int max_fps = 20;
+	if (1 / pongGame.deltaTime > max_fps)
+	{
+		delay(1 / (1 / pongGame.deltaTime - max_fps) * 1000);
+	}
 }

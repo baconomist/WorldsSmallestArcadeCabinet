@@ -38,6 +38,9 @@
     <ClInclude Include="score.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="sound_manager.h">
+      <Filter>Source Files\pong</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ball.cpp">

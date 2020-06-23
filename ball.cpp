@@ -6,6 +6,8 @@
 
 #include "ball.h"
 
+#include "sound_manager.h"
+
 const float MIN_VEL = 1;
 const float MAX_VEL = 100;
 
@@ -64,8 +66,6 @@ void Ball::reset()
 void Ball::draw(U8G2 display)
 {
 	display.drawFilledEllipse(x, y, RADIUS, RADIUS, U8G2_DRAW_ALL);
-
-	update();
 }
 
 void Ball::update()
@@ -92,16 +92,18 @@ void Ball::handleBounce()
 }
 
 void Ball::onBounce(ScreenSide screenSide)
-{
+{	
 	if (screenSide != SCREEN_TOP && screenSide != SCREEN_BOTTOM)
 	{
 		vel_x = -vel_x;
 		vel_y = -vel_y;
+		// Update ball velocity based on paddle movement
 		if (screenSide == SCREEN_LEFT)
 			vel_y += ((pongGame.leftPaddle.up_button_pressed() ? 1 : 0) + (pongGame.leftPaddle.down_button_pressed() ? -1 : 0)) * (vel_y > 0 ? 1 : -1);
 		else if (screenSide == SCREEN_RIGHT)
 			vel_y += ((pongGame.rightPaddle.up_button_pressed() ? 1 : 0) + (pongGame.rightPaddle.down_button_pressed() ? -1 : 0)) * (vel_y > 0 ? 1 : -1);
 		//vel_y = -vel_y + 1 * (random(0, 1) == 0 ? 1 : -1);
+		SoundManager::playBallHitBeep();
 	}
 	else
 	{

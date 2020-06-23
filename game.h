@@ -36,6 +36,7 @@ public:
 	void drawGameOverScreen();
 
 	void drawGame();
+	void updateGame();
 
 	void showSplashScreen();
 
