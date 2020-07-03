@@ -9,6 +9,7 @@
 
 #include "sound_manager.h"
 
+const bool round_timer_enabled = false;
 float menu_accumilator = 0;
 bool draw_pre_round_timer = true;
 bool set_delta_time_zero = false;
@@ -199,23 +200,29 @@ void Game::draw()
 			// Pre-round timer
 			for (int i = 3; i > 0; i--)
 			{
-				char buff[10];
-				sprintf(buff, "%d", i);
+				if (round_timer_enabled)
+				{
+					char buff[10];
+					sprintf(buff, "%d", i);
 
-				display.clearBuffer();
+					display.clearBuffer();
 
-				drawGame();
+					drawGame();
 
-				display.setFont(u8g2_font_10x20_mf);
-				display.drawStr(getWidth() / 2.0f - 5, getHeight() / 2.0f, buff);
-				SoundManager::playLowBeep();
-				// Reset Font
-				display.setFont(u8g2_font_5x7_mf);
+					display.setFont(u8g2_font_10x20_mf);
+					display.drawStr(getWidth() / 2.0f - 5, getHeight() / 2.0f, buff);
+
+					display.sendBuffer();
+				}
 				
-				display.sendBuffer();
+				SoundManager::playLowBeep();
 				
 				delay(500);
 			}
+
+			// Reset Font
+			display.setFont(u8g2_font_5x7_mf);
+			
 			draw_pre_round_timer = false;
 			// Prevent updates until frame after round timer
 			set_delta_time_zero = true;
